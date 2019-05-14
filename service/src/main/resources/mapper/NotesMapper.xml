@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lee.vshare.common.dao.NotesMapper">
+  <resultMap id="BaseResultMap" type="com.lee.vshare.common.entity.Notes">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <result column="id" jdbcType="BIGINT" property="id" />
+    <result column="note_id" jdbcType="BIGINT" property="noteId" />
+    <result column="note_author_id" jdbcType="BIGINT" property="noteAuthorId" />
+    <result column="note_title" jdbcType="VARCHAR" property="noteTitle" />
+    <result column="note_author_name" jdbcType="VARCHAR" property="noteAuthorName" />
+    <result column="note_describe" jdbcType="VARCHAR" property="noteDescribe" />
+    <result column="note_create_time" jdbcType="TIMESTAMP" property="noteCreateTime" />
+    <result column="note_modified_time" jdbcType="TIMESTAMP" property="noteModifiedTime" />
+    <result column="note_words" jdbcType="INTEGER" property="noteWords" />
+    <result column="note_reads" jdbcType="INTEGER" property="noteReads" />
+    <result column="note_share" jdbcType="INTEGER" property="noteShare" />
+    <result column="note_likes" jdbcType="INTEGER" property="noteLikes" />
+    <result column="note_permission" jdbcType="BIT" property="notePermission" />
+    <result column="note_type" jdbcType="TINYINT" property="noteType" />
+    <result column="note_content" jdbcType="LONGVARCHAR" property="noteContent" />
+  </resultMap>
+
+  <select id="selectNotesDesc" resultMap="BaseResultMap" parameterType="int" >
+    SELECT * from v_notes order by id DESC limit #{id}
+  </select>
+
+</mapper>

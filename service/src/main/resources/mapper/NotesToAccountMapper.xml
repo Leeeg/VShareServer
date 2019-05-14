@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lee.vshare.common.dao.NotesToAccountMapper">
+  <resultMap id="BaseResultMap" type="com.lee.vshare.common.entity.NotesToAccount">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <result column="id" jdbcType="BIGINT" property="id" />
+    <result column="note_id" jdbcType="BIGINT" property="noteId" />
+    <result column="note_author_id" jdbcType="BIGINT" property="noteAuthorId" />
+  </resultMap>
+</mapper>

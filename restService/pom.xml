@@ -15,33 +15,149 @@
     <description>Demo project for Spring Boot</description>
 
     <properties>
+        <!-- ${basedir}引用工程根目录 -->
+        <!-- targetJavaProject：声明存放源码的目录位置 -->
+        <targetJavaProject>${basedir}/src/main/java</targetJavaProject>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
+        <mysql.version>8.0.13</mysql.version>
+        <swagger.version>2.9.2</swagger.version>
+        <mybatis.version>1.3.2</mybatis.version>
+        <mapper.version>4.1.2</mapper.version>
+        <mybatis-generator.version>1.3.7</mybatis-generator.version>
+        <druid.version>1.1.12</druid.version>
+        <commonmark.version>0.9.0</commonmark.version>
+        <mybatis-tk.version>1.1.4</mybatis-tk.version>
+        <pagehelper.version>1.2.1</pagehelper.version>
+        <integration-stream.version>5.1.1.RELEASE</integration-stream.version>
+        <integration-mqtt.version>5.1.1.RELEASE</integration-mqtt.version>
+        <protobuf.version>2.6.1</protobuf.version>
+        <protobuf-java-format.version>1.4</protobuf-java-format.version>
+        <httpclient.version>4.5.5</httpclient.version>
+        <fastjson.version>1.2.57</fastjson.version>
+        <jwt.version>3.8.0</jwt.version>
     </properties>
 
     <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
-        </dependency>
-
+        <!--SpringBoot测试支持-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
 
+        <!--Web支持-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-            <version>1.5.2.RELEASE</version>
         </dependency>
 
-        <!-- 格式化对象，方便输出日志 -->
+        <!--Swagger2支持-->
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>${swagger.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+            <version>${swagger.version}</version>
+        </dependency>
+
+        <!--Mybatis-->
+        <!--<dependency>-->
+            <!--<groupId>org.mybatis.spring.boot</groupId>-->
+            <!--<artifactId>mybatis-spring-boot-starter</artifactId>-->
+            <!--<version>${mybatis.version}</version>-->
+        <!--</dependency>-->
+        <!--MyBatis逆向工程-->
+        <!--<dependency>-->
+            <!--<groupId>org.mybatis.generator</groupId>-->
+            <!--<artifactId>mybatis-generator-core</artifactId>-->
+            <!--<version>${mybatis-generator.version}</version>-->
+        <!--</dependency>-->
+        <!--通用mapper-->
+        <!--<dependency>-->
+            <!--<groupId>tk.mybatis</groupId>-->
+            <!--<artifactId>mapper</artifactId>-->
+            <!--<version>${mapper.version}</version>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+        <!--<groupId>tk.mybatis</groupId>-->
+        <!--<artifactId>mapper-spring-boot-starter</artifactId>-->
+        <!--<version>2.1.2</version>-->
+        <!--</dependency>-->
+        <!--&lt;!&ndash;pagehelper 分页插件&ndash;&gt;-->
+        <!--<dependency>-->
+        <!--<groupId>com.github.pagehelper</groupId>-->
+        <!--<artifactId>pagehelper-spring-boot-starter</artifactId>-->
+        <!--<version>1.2.10</version>-->
+        <!--</dependency>-->
+
+        <!--Mysql支持-->
+        <!--<dependency>-->
+            <!--<groupId>mysql</groupId>-->
+            <!--<artifactId>mysql-connector-java</artifactId>-->
+            <!--<version>${mysql.version}</version>-->
+        <!--</dependency>-->
+
+        <!-- druid  数据库连接池-->
+        <!--<dependency>-->
+            <!--<groupId>com.alibaba</groupId>-->
+            <!--<artifactId>druid</artifactId>-->
+            <!--<version>${druid.version}</version>-->
+        <!--</dependency>-->
+
+
+        <!-- MQTT -->
+        <dependency>
+            <groupId>org.springframework.integration</groupId>
+            <artifactId>spring-integration-stream</artifactId>
+            <version>${integration-stream.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.integration</groupId>
+            <artifactId>spring-integration-mqtt</artifactId>
+            <version>${integration-mqtt.version}</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.google.protobuf/protobuf-java -->
+        <dependency>
+            <groupId>com.google.protobuf</groupId>
+            <artifactId>protobuf-java</artifactId>
+            <version>${protobuf.version}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.googlecode.protobuf-java-format/protobuf-java-format -->
+        <dependency>
+            <groupId>com.googlecode.protobuf-java-format</groupId>
+            <artifactId>protobuf-java-format</artifactId>
+            <version>${protobuf-java-format.version}</version>
+        </dependency>
+
+        <!-- HttpClient -->
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>${httpclient.version}</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.alibaba/fastjson -->
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
-            <version>1.1.41</version>
+            <version>${fastjson.version}</version>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.auth0/java-jwt -->
+        <dependency>
+            <groupId>com.auth0</groupId>
+            <artifactId>java-jwt</artifactId>
+            <version>${jwt.version}</version>
+        </dependency>
+
+
+        <!-- dubbo -->
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>dubbo</artifactId>
@@ -53,28 +169,25 @@
                 </exclusion>
             </exclusions>
         </dependency>
+        <!-- zookeeper -->
         <dependency>
             <groupId>org.apache.zookeeper</groupId>
             <artifactId>zookeeper</artifactId>
             <version>3.4.6</version>
-            <exclusions>
-                <exclusion>
-                    <artifactId>slf4j-log4j12</artifactId>
-                    <groupId>org.slf4j</groupId>
-                </exclusion>
-            </exclusions>
         </dependency>
         <dependency>
             <groupId>com.github.sgroschupf</groupId>
             <artifactId>zkclient</artifactId>
             <version>0.1</version>
         </dependency>
+
         <dependency>
             <groupId>com.lee.vshare</groupId>
             <artifactId>common</artifactId>
             <version>0.0.1-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>
+
     </dependencies>
 
     <build>

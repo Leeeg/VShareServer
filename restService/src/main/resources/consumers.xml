@@ -15,5 +15,8 @@
 	
 	<!-- 生成远程服务代理，可以和本地 bean 一样使用 testService -->
 	<dubbo:reference id="demoService" interface="com.lee.vshare.common.DemoService" />
+	<!--<dubbo:reference id="accountService" interface="com.lee.vshare.common.service.AccountService" />-->
+	<!--<dubbo:reference id="blogService" interface="com.lee.vshare.common.service.BlogService" />-->
+	<!--<dubbo:reference id="visitService" interface="com.lee.vshare.common.service.VisitService" />-->
 	
 </beans>

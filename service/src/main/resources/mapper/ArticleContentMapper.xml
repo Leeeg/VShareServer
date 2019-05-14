@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lee.vshare.common.dao.ArticleContentMapper">
+  <resultMap id="BaseResultMap" type="com.lee.vshare.common.entity.ArticleContent">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <result column="id" jdbcType="BIGINT" property="id" />
+    <result column="article_id" jdbcType="BIGINT" property="articleId" />
+    <result column="create_by" jdbcType="TIMESTAMP" property="createBy" />
+    <result column="modifield_by" jdbcType="TIMESTAMP" property="modifieldBy" />
+    <result column="content" jdbcType="LONGVARCHAR" property="content" />
+  </resultMap>
+</mapper>

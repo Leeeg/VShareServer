@@ -3,9 +3,12 @@ package com.lee.vshare.service;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ImportResource;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
+@EnableSwagger2
 @SpringBootApplication
-@ImportResource(value = {"classpath:providers.xml"})// 使用 providers.xml 配置
+@tk.mybatis.spring.annotation.MapperScan(basePackages = "com.lee.vshare.service.dao")
+@ImportResource(value = {"classpath:providers.xml"})
 public class ServiceApplication {
 
     public static void main(String[] args) {
