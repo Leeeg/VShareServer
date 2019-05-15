@@ -1,5 +1,6 @@
 package com.lee.vshare.rest.controller;
 
+import com.alibaba.dubbo.config.annotation.Reference;
 import com.lee.vshare.common.TaskExecutor.AsyncTask;
 import com.lee.vshare.common.dto.Response;
 import com.lee.vshare.common.entity.Notes;
@@ -29,14 +30,14 @@ import java.util.stream.IntStream;
  * @Time 下午5:05
  */
 
-//@RestController
-//@RequestMapping("/api/notes")
-//@Api(value = "/notes", tags = "Notes", description = "文章操作")
+@RestController
+@RequestMapping("/api/notes")
+@Api(value = "/notes", tags = "Notes", description = "文章操作")
 public class BlogController extends BaseController implements NotesPresenter {
 
     Logger logger = LoggerFactory.getLogger(BlogController.class);
 
-    @Autowired
+    @Reference(version = "1.0.0")
     BlogService notesService;
 
     @Autowired

@@ -1,4 +1,4 @@
-package com.lee.vshare.service.config;
+package com.lee.vshare.common.config;
 
 import com.lee.vshare.common.TaskExecutor.VisitableThreadPoolTaskExecutor;
 import org.slf4j.Logger;

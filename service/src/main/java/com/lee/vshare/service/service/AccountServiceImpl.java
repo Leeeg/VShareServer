@@ -1,5 +1,6 @@
 package com.lee.vshare.service.service;
 
+import com.alibaba.dubbo.config.annotation.Service;
 import com.lee.vshare.service.dao.AccountMapper;
 import com.lee.vshare.common.entity.Account;
 import com.lee.vshare.common.service.AccountService;
@@ -9,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Service;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
@@ -30,7 +30,7 @@ import static com.lee.vshare.service.common.Container.SMS_TPL_ID;
  * @Date 19-4-16
  * @Time 下午3:45
  */
-@Service
+@Service(version = "1.0.0")
 public class AccountServiceImpl extends BaseService<Account> implements AccountService {
 
     Logger logger = LoggerFactory.getLogger(AccountServiceImpl.class);

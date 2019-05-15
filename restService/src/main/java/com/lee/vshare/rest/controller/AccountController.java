@@ -1,5 +1,6 @@
 package com.lee.vshare.rest.controller;
 
+import com.alibaba.dubbo.config.annotation.Reference;
 import com.lee.vshare.common.dto.Response;
 import com.lee.vshare.common.entity.Account;
 import com.lee.vshare.common.service.AccountService;
@@ -37,14 +38,14 @@ import java.util.Map;
  * @author:Lee
  * @date: 2018/11/9
  */
-//@RestController
-//@RequestMapping("/api/account")
-//@Api(value = "/account", tags = "Account", description = "帐号操作")
+@RestController
+@RequestMapping("/api/account")
+@Api(value = "/account", tags = "Account", description = "帐号操作")
 public class AccountController extends BaseController implements AccountPresenter {
 
     Logger logger = LoggerFactory.getLogger(AccountController.class);
 
-    @Autowired
+    @Reference(version = "1.0.0")
     AccountService accountService;
 
     @ApiOperation("获取验证码")

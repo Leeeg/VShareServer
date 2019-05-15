@@ -1,12 +1,12 @@
 package com.lee.vshare.service.service;
 
+import com.alibaba.dubbo.config.annotation.Service;
 import com.lee.vshare.service.dao.NotesMapper;
 import com.lee.vshare.common.entity.Notes;
 import com.lee.vshare.common.service.BlogService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import tk.mybatis.mapper.entity.Example;
 
 import java.util.Date;
@@ -18,7 +18,7 @@ import java.util.List;
  * @Date 18-12-19
  * @Time 下午8:32
  */
-@Service
+@Service(version = "1.0.0")
 public class BlogServiceImpl extends BaseService<Notes> implements BlogService {
 
     Logger logger = LoggerFactory.getLogger(BlogServiceImpl.class);
