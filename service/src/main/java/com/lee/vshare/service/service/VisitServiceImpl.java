@@ -3,6 +3,7 @@ package com.lee.vshare.service.service;
 import com.alibaba.dubbo.config.annotation.Service;
 import com.lee.vshare.common.entity.VisitLog;
 import com.lee.vshare.service.dao.VisitLogMapper;
+import com.lee.vshare.service.service.base.BaseService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;

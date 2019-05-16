@@ -1,4 +1,4 @@
-package com.lee.vshare.service.service;
+package com.lee.vshare.service.service.base;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import tk.mybatis.mapper.common.Mapper;

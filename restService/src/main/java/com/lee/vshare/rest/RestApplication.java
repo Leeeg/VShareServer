@@ -9,7 +9,8 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 
 @EnableSwagger2
-@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})
+@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class},
+        scanBasePackages={"com.lee.vshare.rest","com.lee.vshare.common"})
 public class RestApplication {
 
     public static void main(String[] args) {

@@ -4,6 +4,7 @@ import com.alibaba.dubbo.config.annotation.Service;
 import com.lee.vshare.service.dao.NotesMapper;
 import com.lee.vshare.common.entity.Notes;
 import com.lee.vshare.common.service.BlogService;
+import com.lee.vshare.service.service.base.BaseService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

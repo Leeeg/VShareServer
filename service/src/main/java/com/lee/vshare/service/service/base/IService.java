@@ -1,4 +1,4 @@
-package com.lee.vshare.service.service;
+package com.lee.vshare.service.service.base;
 
 import java.util.List;
 

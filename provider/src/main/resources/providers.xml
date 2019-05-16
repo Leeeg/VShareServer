@@ -7,16 +7,20 @@
        http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
        
 	<!-- 配置可参考 http://dubbo.io/User+Guide-zh.htm -->
-	<!-- 消费方应用名，用于计算依赖关系，不是匹配条件，不要与提供方一样 -->
-	<dubbo:application name="dubbo-consumer" owner="restService" />
+	<!-- 服务提供方应用名，用于计算依赖关系 -->
+	<dubbo:application name="provider" owner="provider" />
 	
 	<!-- 定义 zookeeper 注册中心地址及协议 -->
 	<dubbo:registry protocol="zookeeper" address="localhost:2181" client="zkclient" />
+		
+	<!-- 定义 Dubbo 协议名称及使用的端口，dubbo 协议缺省端口为 20880，如果配置为 -1 或者没有配置 port，则会分配一个没有被占用的端口 -->
+	<dubbo:protocol name="dubbo" port="-1" />
 	
-	<!-- 生成远程服务代理，可以和本地 bean 一样使用 testService -->
-	<dubbo:reference id="demoService" interface="com.lee.vshare.common.DemoService" />
-	<!--<dubbo:reference id="accountService" interface="com.lee.vshare.common.service.AccountService" />-->
-	<!--<dubbo:reference id="blogService" interface="com.lee.vshare.common.service.BlogService" />-->
-	<!--<dubbo:reference id="visitService" interface="com.lee.vshare.common.service.VisitService" />-->
+	<!-- 声明需要暴露的服务接口 -->
+	<dubbo:service interface="com.lee.vshare.provider.DemoService"
+		ref="demoService" timeout="10000" />
+		
+	<!-- 和本地 bean 一样实现服务 -->
+	<bean id="demoService" class="com.lee.vshare.provider.DemoServiceImpl" />
 	
 </beans>

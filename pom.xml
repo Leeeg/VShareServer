@@ -15,6 +15,13 @@
         <module>service</module>
         <module>restService</module>
         <module>common</module>
+
+        <module>provider</module>
+        <module>cosumer</module>
+
+        <module>dubbo-provider</module>
+        <module>dubbo-consumer</module>
+
     </modules>
 
     <properties>
