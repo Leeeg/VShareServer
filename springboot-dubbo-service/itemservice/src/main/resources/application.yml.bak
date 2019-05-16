@@ -1,0 +1,14 @@
+spring:
+  dubbo:
+    scan: com.elon.item.api.impl #指的是 Dubbo 服务实现类包
+    application:
+      name: item-service
+    registry:
+      protocol: zookeeper
+#       zookeeper单机
+      address: 127.0.0.1:2181
+      # zookeeper集群
+#      address: 127.0.0.1:2281,127.0.0.1:2381,127.0.0.1:2481
+    protocol:
+      name: dubbo #调用服务用的协议
+      port: 20881 #通过什么端口暴露服务

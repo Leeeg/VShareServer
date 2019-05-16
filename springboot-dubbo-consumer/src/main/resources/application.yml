@@ -1,0 +1,13 @@
+server:
+  port: 8089
+spring:
+  dubbo:
+    application:
+      name: item-consumer-web
+    registry:
+      protocol: zookeeper
+      # zookeeper单机
+      address: 127.0.0.1:2181
+      # zookeeper集群
+#      address: 127.0.0.1:2281,127.0.0.1:2381,127.0.0.1:2481
+    scan: com.elon

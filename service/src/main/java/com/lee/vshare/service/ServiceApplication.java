@@ -6,7 +6,7 @@ import org.springframework.context.annotation.ImportResource;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @EnableSwagger2
-@SpringBootApplication//(scanBasePackages={"com.lee.vshare.service","com.lee.vshare.common"})
+@SpringBootApplication(scanBasePackages={"com.lee.vshare.service","com.lee.vshare.common"})
 @tk.mybatis.spring.annotation.MapperScan(basePackages = "com.lee.vshare.service.dao")
 public class ServiceApplication {
 
