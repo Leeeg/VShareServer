@@ -79,6 +79,7 @@ public class BlogServiceImpl extends BaseService<Notes> implements BlogService {
 
     @Override
     public List<Notes> getAllNotes() {
+        logger.info("getAllNotes");
         return notesMapper.selectAll();
     }
 

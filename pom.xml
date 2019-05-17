@@ -16,15 +16,6 @@
         <module>restService</module>
         <module>common</module>
 
-        <!--<module>provider</module>-->
-        <!--<module>cosumer</module>-->
-
-        <!--<module>dubbo-provider</module>-->
-        <!--<module>dubbo-consumer</module>-->
-
-        <module>springboot-dubbo-service</module>
-        <module>springboot-dubbo-consumer</module>
-
     </modules>
 
     <properties>

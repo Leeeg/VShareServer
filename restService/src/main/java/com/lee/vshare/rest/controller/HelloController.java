@@ -1,5 +1,6 @@
 package com.lee.vshare.rest.controller;
 
+import com.lee.vshare.rest.controller.base.BaseController;
 import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

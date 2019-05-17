@@ -1,4 +1,4 @@
-package com.lee.vshare.rest.controller;
+package com.lee.vshare.rest.controller.base;
 
 /**
  * @title:

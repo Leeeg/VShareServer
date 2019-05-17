@@ -159,50 +159,19 @@
             <version>${fastjson.version}</version>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/com.auth0/java-jwt -->
-        <!--<dependency>-->
-            <!--<groupId>com.auth0</groupId>-->
-            <!--<artifactId>java-jwt</artifactId>-->
-            <!--<version>${jwt.version}</version>-->
-        <!--</dependency>-->
+        <!--log4j-->
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>1.2.9</version>
+        </dependency>
 
-
-
-        <!--springboot dubbo 集成,不管是服务提供者还是服务消费者都需要这个依赖-->
+        <!--springboot dubbo 集成-->
         <dependency>
             <groupId>io.dubbo.springboot</groupId>
             <artifactId>spring-boot-starter-dubbo</artifactId>
             <version>1.0.0</version>
         </dependency>
-        <dependency>
-            <groupId>log4j</groupId>
-            <artifactId>log4j</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
-        <!-- dubbo -->
-        <!--<dependency>-->
-            <!--<groupId>com.alibaba</groupId>-->
-            <!--<artifactId>dubbo</artifactId>-->
-            <!--<version>2.4.10</version>-->
-            <!--<exclusions>-->
-                <!--<exclusion>-->
-                    <!--<artifactId>spring</artifactId>-->
-                    <!--<groupId>org.springframework</groupId>-->
-                <!--</exclusion>-->
-            <!--</exclusions>-->
-        <!--</dependency>-->
-
-        <!--&lt;!&ndash; zookeeper &ndash;&gt;-->
-        <!--<dependency>-->
-            <!--<groupId>org.apache.zookeeper</groupId>-->
-            <!--<artifactId>zookeeper</artifactId>-->
-            <!--<version>3.4.6</version>-->
-        <!--</dependency>-->
-        <!--<dependency>-->
-            <!--<groupId>com.github.sgroschupf</groupId>-->
-            <!--<artifactId>zkclient</artifactId>-->
-            <!--<version>0.1</version>-->
-        <!--</dependency>-->
 
         <dependency>
             <groupId>com.lee.vshare</groupId>

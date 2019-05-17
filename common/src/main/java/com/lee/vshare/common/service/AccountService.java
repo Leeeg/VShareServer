@@ -1,6 +1,7 @@
 package com.lee.vshare.common.service;
 
 import com.lee.vshare.common.entity.Account;
+import org.springframework.stereotype.Service;
 
 /**
  * @Create by lee
@@ -8,6 +9,7 @@ import com.lee.vshare.common.entity.Account;
  * @Date 19-4-16
  * @Time 下午3:46
  */
+
 public interface AccountService {
 
     Integer getCode(String phoneNumber, String code);
