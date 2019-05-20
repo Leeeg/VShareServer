@@ -65,76 +65,6 @@
             <version>${swagger.version}</version>
         </dependency>
 
-        <!--Mybatis-->
-        <!--<dependency>-->
-            <!--<groupId>org.mybatis.spring.boot</groupId>-->
-            <!--<artifactId>mybatis-spring-boot-starter</artifactId>-->
-            <!--<version>${mybatis.version}</version>-->
-        <!--</dependency>-->
-        <!--MyBatis逆向工程-->
-        <!--<dependency>-->
-            <!--<groupId>org.mybatis.generator</groupId>-->
-            <!--<artifactId>mybatis-generator-core</artifactId>-->
-            <!--<version>${mybatis-generator.version}</version>-->
-        <!--</dependency>-->
-        <!--通用mapper-->
-        <!--<dependency>-->
-            <!--<groupId>tk.mybatis</groupId>-->
-            <!--<artifactId>mapper</artifactId>-->
-            <!--<version>${mapper.version}</version>-->
-        <!--</dependency>-->
-        <!--<dependency>-->
-        <!--<groupId>tk.mybatis</groupId>-->
-        <!--<artifactId>mapper-spring-boot-starter</artifactId>-->
-        <!--<version>2.1.2</version>-->
-        <!--</dependency>-->
-        <!--&lt;!&ndash;pagehelper 分页插件&ndash;&gt;-->
-        <!--<dependency>-->
-        <!--<groupId>com.github.pagehelper</groupId>-->
-        <!--<artifactId>pagehelper-spring-boot-starter</artifactId>-->
-        <!--<version>1.2.10</version>-->
-        <!--</dependency>-->
-
-        <!--Mysql支持-->
-        <!--<dependency>-->
-            <!--<groupId>mysql</groupId>-->
-            <!--<artifactId>mysql-connector-java</artifactId>-->
-            <!--<version>${mysql.version}</version>-->
-        <!--</dependency>-->
-
-        <!-- druid  数据库连接池-->
-        <!--<dependency>-->
-            <!--<groupId>com.alibaba</groupId>-->
-            <!--<artifactId>druid</artifactId>-->
-            <!--<version>${druid.version}</version>-->
-        <!--</dependency>-->
-
-
-        <!-- MQTT -->
-        <!--<dependency>-->
-            <!--<groupId>org.springframework.integration</groupId>-->
-            <!--<artifactId>spring-integration-stream</artifactId>-->
-            <!--<version>${integration-stream.version}</version>-->
-        <!--</dependency>-->
-        <!--<dependency>-->
-            <!--<groupId>org.springframework.integration</groupId>-->
-            <!--<artifactId>spring-integration-mqtt</artifactId>-->
-            <!--<version>${integration-mqtt.version}</version>-->
-        <!--</dependency>-->
-
-        <!-- https://mvnrepository.com/artifact/com.google.protobuf/protobuf-java -->
-        <!--<dependency>-->
-            <!--<groupId>com.google.protobuf</groupId>-->
-            <!--<artifactId>protobuf-java</artifactId>-->
-            <!--<version>${protobuf.version}</version>-->
-        <!--</dependency>-->
-        <!--&lt;!&ndash; https://mvnrepository.com/artifact/com.googlecode.protobuf-java-format/protobuf-java-format &ndash;&gt;-->
-        <!--<dependency>-->
-            <!--<groupId>com.googlecode.protobuf-java-format</groupId>-->
-            <!--<artifactId>protobuf-java-format</artifactId>-->
-            <!--<version>${protobuf-java-format.version}</version>-->
-        <!--</dependency>-->
-
         <!-- HttpClient -->
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
@@ -156,29 +86,17 @@
             <version>${jwt.version}</version>
         </dependency>
 
+        <!--springboot dubbo -->
+        <dependency>
+            <groupId>io.dubbo.springboot</groupId>
+            <artifactId>spring-boot-starter-dubbo</artifactId>
+            <version>1.0.0</version>
+        </dependency>
 
-        <!-- dubbo -->
         <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>dubbo</artifactId>
-            <version>2.4.10</version>
-            <exclusions>
-                <exclusion>
-                    <artifactId>spring</artifactId>
-                    <groupId>org.springframework</groupId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <!-- zookeeper -->
-        <dependency>
-            <groupId>org.apache.zookeeper</groupId>
-            <artifactId>zookeeper</artifactId>
-            <version>3.4.6</version>
-        </dependency>
-        <dependency>
-            <groupId>com.github.sgroschupf</groupId>
-            <artifactId>zkclient</artifactId>
-            <version>0.1</version>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>1.2.17</version>
         </dependency>
 
         <dependency>
