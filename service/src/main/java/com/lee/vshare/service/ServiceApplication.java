@@ -1,8 +1,9 @@
 package com.lee.vshare.service;
 
+import com.lee.vshare.service.netty.NettyServer;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.ImportResource;
+import org.springframework.context.ApplicationContext;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @EnableSwagger2
@@ -11,7 +12,10 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 public class ServiceApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(ServiceApplication.class, args);
+        ApplicationContext context = SpringApplication.run(ServiceApplication.class, args);
+        //启动Netty服务
+        NettyServer nettyServer = context.getBean(NettyServer.class);
+        nettyServer.run();
     }
 
 }

@@ -34,7 +34,7 @@ import static com.lee.vshare.service.common.Container.SMS_TPL_ID;
 @Service(version = "1.0.0")
 public class AccountServiceImpl extends BaseService<Account> implements AccountService {
 
-    Logger logger = LoggerFactory.getLogger(AccountServiceImpl.class);
+    Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
     RestTemplate restTemplate;
