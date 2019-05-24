@@ -107,8 +107,8 @@ public class NettyServerHandler extends ChannelInboundHandlerAdapter {
                         .build();
                 ctx.writeAndFlush(nettyMsg);
 
-                asyncTask.getChannelGroup().remove(channel);
-                channel.close();
+//                asyncTask.getChannelGroup().remove(channel);
+//                channel.close();
             }
         }
         super.channelInactive(ctx);
