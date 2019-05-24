@@ -1,20 +1,14 @@
 package com.lee.vshare.service.netty;
 
-import com.lee.vshare.service.netty.protobuf.UserInfo;
+import com.lee.vshare.service.netty.protobuf.NettyMessage;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelPipeline;
 import io.netty.channel.socket.SocketChannel;
-import io.netty.handler.codec.DelimiterBasedFrameDecoder;
-import io.netty.handler.codec.Delimiters;
-import io.netty.handler.codec.LineBasedFrameDecoder;
 import io.netty.handler.codec.protobuf.ProtobufDecoder;
 import io.netty.handler.codec.protobuf.ProtobufEncoder;
 import io.netty.handler.codec.protobuf.ProtobufVarint32FrameDecoder;
 import io.netty.handler.codec.protobuf.ProtobufVarint32LengthFieldPrepender;
-import io.netty.handler.codec.string.StringDecoder;
-import io.netty.handler.codec.string.StringEncoder;
 import io.netty.handler.timeout.IdleStateHandler;
-import io.netty.util.CharsetUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,13 +40,12 @@ public class NettyServerFilter extends ChannelInitializer<SocketChannel> {
          // 解码和编码，应和客户端一致
          //传输的协议 Protobuf
          ph.addLast(new ProtobufVarint32FrameDecoder());
-         ph.addLast(new ProtobufDecoder(UserInfo.UserMsg.getDefaultInstance()));
+         ph.addLast(new ProtobufDecoder(NettyMessage.NettyMsg.getDefaultInstance()));
          ph.addLast(new ProtobufVarint32LengthFieldPrepender());
          ph.addLast(new ProtobufEncoder());
 
-         //分割接收到的Bytebu，根据指定的分割符
+         //业务逻辑实现类
          ph.addLast("nettyServerHandler", nettyServerHandler);
 
-         //业务逻辑实现类
      }
  }

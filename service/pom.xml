@@ -36,7 +36,7 @@
         <pagehelper.version>1.2.1</pagehelper.version>
         <integration-stream.version>5.1.1.RELEASE</integration-stream.version>
         <integration-mqtt.version>5.1.1.RELEASE</integration-mqtt.version>
-        <protobuf.version>3.5.1</protobuf.version>
+        <protobuf.version>3.7.1</protobuf.version>
         <protobuf-java-format.version>1.4</protobuf-java-format.version>
         <httpclient.version>4.5.5</httpclient.version>
         <fastjson.version>1.2.57</fastjson.version>

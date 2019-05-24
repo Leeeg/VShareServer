@@ -1,37 +1,38 @@
 package com.lee.vshare.service.netty;
 
-import com.lee.vshare.service.netty.protobuf.UserInfo;
+import com.lee.vshare.service.netty.protobuf.NettyMessage;
+import com.lee.vshare.service.netty.task.AsyncTask;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
-import io.netty.channel.group.ChannelGroup;
-import io.netty.channel.group.DefaultChannelGroup;
 import io.netty.handler.timeout.IdleState;
 import io.netty.handler.timeout.IdleStateEvent;
 import io.netty.util.ReferenceCountUtil;
-import io.netty.util.concurrent.GlobalEventExecutor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
+
+import static com.lee.vshare.service.netty.contain.NMsgContainer.*;
 
 /**
  * @Title: NettyServerHandler
  * @Description: 服务端业务逻辑
  * @Version:1.0.0
  */
-@Service("nettyServerHandler")
+@Component
 @ChannelHandler.Sharable
 public class NettyServerHandler extends ChannelInboundHandlerAdapter {
 
     Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    //保留所有与服务器建立连接的channel对象，这边的GlobalEventExecutor在写博客的时候解释一下，看其doc
-    private static ChannelGroup channelGroup = new DefaultChannelGroup(GlobalEventExecutor.INSTANCE);
+    @Autowired
+    AsyncTask asyncTask;
 
     /**
      * 表示服务端与客户端连接建立
-     *
      * @param ctx
      * @throws Exception
      */
@@ -43,26 +44,32 @@ public class NettyServerHandler extends ChannelInboundHandlerAdapter {
          * 调用channelGroup的writeAndFlush相当于channelGroup中的每个channel都writeAndFlush
          * 先去广播，再将自己加入到channelGroup中
          */
-        channelGroup.writeAndFlush(" 【服务器】 -" + channel.remoteAddress() + " 加入\n");
-        channelGroup.add(channel);
+        NettyMessage.NettyMsg addNettyMsg = NettyMessage.NettyMsg.newBuilder()
+                .setMsgType(MSG_USER_UP_LINE)
+                .setMsgContent(channel.remoteAddress() + " 上线")
+                .build();
+        asyncTask.getChannelGroup().writeAndFlush(addNettyMsg);
+        asyncTask.getChannelGroup().add(channel);
         super.handlerAdded(ctx);
     }
 
     /**
      * 有连接断开
-     *
      * @param ctx
      * @throws Exception
      */
     @Override
     public void handlerRemoved(ChannelHandlerContext ctx) throws Exception {
         Channel channel = ctx.channel();
-        channelGroup.writeAndFlush(" 【服务器】 -" + channel.remoteAddress() + " 离开\n");
-
         //验证一下每次客户端断开连接，连接自动地从channelGroup中删除调。
-        logger.info("channelGroup : " + channelGroup.size());
+        logger.info("有客户端离开 剩余在线 : " + asyncTask.getChannelGroup().size());
+        NettyMessage.NettyMsg addNettyMsg = NettyMessage.NettyMsg.newBuilder()
+                .setMsgType(MSG_USER_DOWN_LINE)
+                .setMsgContent(channel.remoteAddress() + " 下线")
+                .build();
+        asyncTask.getChannelGroup().writeAndFlush(addNettyMsg);
         //当客户端和服务端断开连接的时候，下面的那段代码netty会自动调用，所以不需要人为的去调用它
-        //channelGroup.remove(channel);
+        //NettyServer.getChannelGroup().remove(channel);
         super.handlerRemoved(ctx);
     }
 
@@ -94,10 +101,13 @@ public class NettyServerHandler extends ChannelInboundHandlerAdapter {
             IdleStateEvent event = (IdleStateEvent) obj;
             if (IdleState.READER_IDLE.equals(event.state())) { // 如果读通道处于空闲状态，说明没有接收到心跳命令
                 logger.info("peng >>> ");
-                UserInfo.UserMsg userMsg = UserInfo.UserMsg.newBuilder().setId(1).setAge(18).setName("lee").setState(0).build();
-                ctx.writeAndFlush(userMsg);
+                NettyMessage.NettyMsg nettyMsg = NettyMessage.NettyMsg.newBuilder()
+                        .setMsgType(MSG_USER_TIME_OUT)
+                        .setMsgContent("time out")
+                        .build();
+                ctx.writeAndFlush(nettyMsg);
 
-                channelGroup.remove(channel);
+                asyncTask.getChannelGroup().remove(channel);
                 channel.close();
             }
         }
@@ -120,29 +130,22 @@ public class NettyServerHandler extends ChannelInboundHandlerAdapter {
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
         Channel channel = ctx.channel();
-        logger.info("收到" + channel.remoteAddress() + " 发送的的消息 : " + msg);
-
+        logger.info("收到 " + channel.remoteAddress() + "发来的消息");
         try {
-            if (msg instanceof UserInfo.UserMsg) {
-                UserInfo.UserMsg userState = (UserInfo.UserMsg) msg;
-                if (userState.getState() == 1) {
-                    System.out.println("客户端业务处理成功!");
-                } else if(userState.getState() == 2){
-                    System.out.println("接受到客户端发送的心跳!  remoteAddress : " + ctx.channel().remoteAddress() + " localAddress : " + ctx.channel().localAddress());
-                    UserInfo.UserMsg userMsg = UserInfo.UserMsg.newBuilder().setId(1).setAge(18).setName("Lee").setState(0).build();
-                    ctx.writeAndFlush(userMsg);
-                }else{
+            if (msg instanceof NettyMessage.NettyMsg) {
+                NettyMessage.NettyMsg readNettyMsg = (NettyMessage.NettyMsg) msg;
+                logger.info("内容 " + readNettyMsg.toString());
+                if (readNettyMsg.getMsgType() == MSG_USER_HEART_BEAT) {
+                    System.out.println("客户端发送的心跳  remoteAddress : " + channel.remoteAddress() + " localAddress : " + channel.localAddress());
+                    asyncTask.peng(channel);
+                } else if (readNettyMsg.getMsgType() == MSG_USER_BUSINESS) {
+                    asyncTask.dispenseMsg(channel, readNettyMsg);
+                } else {
                     System.out.println("未知命令!");
                 }
+            } else {
+                System.out.println("无效消息!");
             }
-
-//            channelGroup.forEach(ch -> {
-//                if (channel != ch) {
-//                    ch.writeAndFlush(channel.remoteAddress() + " 发送的消息:" + msg + " \n");
-//                } else {
-//                    ch.writeAndFlush(" 【自己】" + msg + " \n");
-//                }
-//            });
 
         } finally {
             ReferenceCountUtil.release(msg);
