@@ -1,6 +1,7 @@
 package com.lee.vshare.service.netty.task;
 
 import com.lee.vshare.service.netty.protobuf.NettyMessage;
+import com.lee.vshare.service.util.Utils;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.Channel;
@@ -15,6 +16,7 @@ import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 
 import java.net.InetSocketAddress;
+import java.util.function.Consumer;
 
 import static com.lee.vshare.service.netty.contain.NMsgContainer.MSG_USER_HEART_BEAT;
 import static com.lee.vshare.service.netty.contain.NMsgContainer.MSG_USER_MESSAGE_SUCCESS;
@@ -28,7 +30,7 @@ import static com.lee.vshare.service.netty.contain.NMsgContainer.MSG_USER_MESSAG
  */
 @Component
 @Lazy
-public class AsyncTask {
+public class NettyTask {
 
     protected final Logger logger = LoggerFactory.getLogger(this.getClass());
 
@@ -87,17 +89,18 @@ public class AsyncTask {
         long start = System.currentTimeMillis();
         NettyMessage.NettyMsg pengNettyMsg = NettyMessage.NettyMsg.newBuilder()
                 .setMsgType(MSG_USER_HEART_BEAT)
-                .setMsgContent("peng")
                 .build();
         channel.writeAndFlush(pengNettyMsg);
         long end = System.currentTimeMillis();
         logger.info("peng finished, time elapsed: {} ms." + "\n", end - start );
 
-        String host = "127.0.0.1"; // ip地址
-        System.out.println("发送udp");
-        DatagramPacket dispensePacket = new DatagramPacket(Unpooled.buffer(8),
-                new InetSocketAddress(host, 9098));
-        udpChannel.writeAndFlush(dispensePacket);
+        channelGroup.forEach(channel1 -> {
+            String host = Utils.getIpFromChannel(channel);
+            System.out.println("发送udp : " + host);
+            DatagramPacket dispensePacket = new DatagramPacket(Unpooled.buffer(8),
+                    new InetSocketAddress(host, 9091));
+            udpChannel.writeAndFlush(dispensePacket);
+        });
 
     }
 

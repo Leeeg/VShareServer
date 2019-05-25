@@ -1,6 +1,6 @@
 package com.lee.vshare.service.netty;
 
-import com.lee.vshare.service.netty.task.AsyncTask;
+import com.lee.vshare.service.netty.task.NettyTask;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.buffer.PooledByteBufAllocator;
@@ -43,7 +43,7 @@ public class NettyServer {
     private NettyUDPHandler nettyUDPHandler;
 
     @Autowired
-    AsyncTask asyncTask;
+    NettyTask nettyTask;
 
     public void run() {
         try {
@@ -66,7 +66,6 @@ public class NettyServer {
                     .option(ChannelOption.SO_RCVBUF, 1024) //设置接受数据缓冲大小
                     .handler(nettyUDPHandler);
 
-
             ChannelFuture channelFuture = serverBootstrap.bind(port).sync();// 服务器绑定端口监听
             logger.info("TCP服务端启动成功,端口是 : " + port);
             Channel channel = channelFuture.channel();
@@ -74,7 +73,7 @@ public class NettyServer {
             ChannelFuture udpChannelFuture = bootstrap.bind(udpPort).sync();// 服务器绑定端口监听
             logger.info("UDP服务端启动成功,端口是 : " + udpPort);
             Channel udpChannel = udpChannelFuture.channel();
-            asyncTask.setUdpChannel(udpChannel);
+            nettyTask.setUdpChannel(udpChannel);
 
             channel.closeFuture().sync();// 监听服务器关闭监听
             udpChannel.closeFuture().sync();// 监听服务器关闭监听

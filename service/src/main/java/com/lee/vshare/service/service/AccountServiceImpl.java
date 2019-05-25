@@ -21,9 +21,9 @@ import tk.mybatis.mapper.entity.Example;
 import java.net.URI;
 import java.util.Date;
 
-import static com.lee.vshare.service.common.Container.SMS_APPCODE;
-import static com.lee.vshare.service.common.Container.SMS_HOST;
-import static com.lee.vshare.service.common.Container.SMS_TPL_ID;
+import static com.lee.vshare.service.config.Container.SMS_APPCODE;
+import static com.lee.vshare.service.config.Container.SMS_HOST;
+import static com.lee.vshare.service.config.Container.SMS_TPL_ID;
 
 /**
  * @Create by lee

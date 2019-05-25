@@ -1,8 +1,7 @@
 package com.lee.vshare.service.netty;
 
-import com.lee.vshare.service.netty.task.AsyncTask;
+import com.lee.vshare.service.netty.task.NettyTask;
 import io.netty.buffer.ByteBuf;
-import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
@@ -11,7 +10,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
 /**
  * @Title: NettyServerHandler
@@ -25,7 +23,7 @@ public class NettyUDPHandler extends SimpleChannelInboundHandler<DatagramPacket>
     Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
-    AsyncTask asyncTask;
+    NettyTask nettyTask;
 
     /**
      * 表示服务端与客户端连接建立
@@ -92,7 +90,7 @@ public class NettyUDPHandler extends SimpleChannelInboundHandler<DatagramPacket>
         ByteBuf byteBuf = datagramPacket.copy().content();
         logger.info("byteBuf : " + byteBuf.readableBytes());
 
-        asyncTask.dispenseAudio(ip, byteBuf);
+        nettyTask.dispenseAudio(ip, byteBuf);
     }
 
 }

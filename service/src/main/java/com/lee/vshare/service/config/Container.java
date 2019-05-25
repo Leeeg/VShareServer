@@ -1,4 +1,4 @@
-package com.lee.vshare.service.common;
+package com.lee.vshare.service.config;
 
 /**
  * @Create by lee
