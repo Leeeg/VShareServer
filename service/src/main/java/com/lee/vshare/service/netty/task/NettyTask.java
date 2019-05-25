@@ -11,6 +11,7 @@ import io.netty.channel.socket.DatagramPacket;
 import io.netty.util.concurrent.GlobalEventExecutor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
@@ -36,6 +37,9 @@ public class NettyTask {
 
     private Channel udpChannel;
 
+    @Autowired
+    Utils utils;
+
     //保留所有与服务器建立连接的channel对象，这边的GlobalEventExecutor在写博客的时候解释一下，看其doc
     private ChannelGroup channelGroup = new DefaultChannelGroup(GlobalEventExecutor.INSTANCE);
 
@@ -60,7 +64,7 @@ public class NettyTask {
             }
         });
         long end = System.currentTimeMillis();
-        logger.info("dispenseAudio finished, time elapsed: {} ms." + "\n", end - start );
+        logger.info("dispenseAudio finished, time elapsed: {} ms." + "\n", end - start);
     }
 
     @Async("asyncPoolTaskExecutor")
@@ -80,7 +84,7 @@ public class NettyTask {
             }
         });
         long end = System.currentTimeMillis();
-        logger.info("dispenseMsg finished, time elapsed: {} ms." + "\n", end - start );
+        logger.info("dispenseMsg finished, time elapsed: {} ms." + "\n", end - start);
     }
 
     @Async("asyncPoolTaskExecutor")
@@ -92,13 +96,13 @@ public class NettyTask {
                 .build();
         channel.writeAndFlush(pengNettyMsg);
         long end = System.currentTimeMillis();
-        logger.info("peng finished, time elapsed: {} ms." + "\n", end - start );
+        logger.info("peng finished, time elapsed: {} ms." + "\n", end - start);
 
         channelGroup.forEach(channel1 -> {
-            String host = Utils.getIpFromChannel(channel);
+            String host = utils.getIpFromChannel(channel);
             System.out.println("发送udp : " + host);
             DatagramPacket dispensePacket = new DatagramPacket(Unpooled.buffer(8),
-                    new InetSocketAddress(host, 9091));
+                    new InetSocketAddress("192.168.32.195", 9091));
             udpChannel.writeAndFlush(dispensePacket);
         });
 
