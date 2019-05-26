@@ -101,7 +101,7 @@ public class NettyTask {
         channelGroup.forEach(channel1 -> {
             String host = utils.getIpFromChannel(channel);
             System.out.println("发送udp : " + host);
-            DatagramPacket dispensePacket = new DatagramPacket(Unpooled.buffer(8),
+            DatagramPacket dispensePacket = new DatagramPacket(Unpooled.buffer(22),
                     new InetSocketAddress("192.168.32.195", 9091));
             udpChannel.writeAndFlush(dispensePacket);
         });

@@ -35,7 +35,7 @@ public class NettyServerFilter extends ChannelInitializer<SocketChannel> {
          ChannelPipeline ph = ch.pipeline();
 
          //入参说明: 读超时时间、写超时时间、所有类型的超时时间、时间格式
-         ph.addLast(new IdleStateHandler(8, 0, 0, TimeUnit.SECONDS));
+         ph.addLast(new IdleStateHandler(0, 0, 60, TimeUnit.SECONDS));
 
          // 解码和编码，应和客户端一致
          //传输的协议 Protobuf
