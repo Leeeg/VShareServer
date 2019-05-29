@@ -21,8 +21,7 @@ public class Utils {
     protected final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     public String getIpFromChannel(Channel channel){
-        InetSocketAddress ipSocket = (InetSocketAddress) channel.remoteAddress();
-        String ip = ipSocket.getAddress().getHostAddress();
+        String ip = ((InetSocketAddress) channel.remoteAddress()).getAddress().getHostAddress();
         logger.info("getIpFromChannel : ip = " + ip);
         return ip;
     }

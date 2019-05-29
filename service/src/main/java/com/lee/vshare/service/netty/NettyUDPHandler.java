@@ -2,6 +2,8 @@ package com.lee.vshare.service.netty;
 
 import com.lee.vshare.service.netty.task.NettyTask;
 import io.netty.buffer.ByteBuf;
+import io.netty.buffer.ByteBufUtil;
+import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
@@ -10,6 +12,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import java.net.InetSocketAddress;
 
 /**
  * @Title: NettyServerHandler
@@ -85,12 +89,19 @@ public class NettyUDPHandler extends SimpleChannelInboundHandler<DatagramPacket>
      */
     @Override
     protected void channelRead0(ChannelHandlerContext channelHandlerContext, DatagramPacket datagramPacket) throws Exception {
-        String ip = datagramPacket.sender().getAddress().toString();
-        logger.info("channelRead0 : " + ip);
+        InetSocketAddress sender = datagramPacket.sender();
+        logger.info("channelRead0 : sender ： " + sender);
         ByteBuf byteBuf = datagramPacket.copy().content();
         logger.info("byteBuf : " + byteBuf.readableBytes());
 
-        nettyTask.dispenseAudio(ip, byteBuf);
+        if (byteBuf.readableBytes() == 2){
+            String id = new String(ByteBufUtil.getBytes(byteBuf));
+            logger.info("id : " + id);
+            logger.info("sender : " + sender);
+            nettyTask.getUdpAddr().put(id, sender);
+        } else {
+            nettyTask.dispenseAudio(sender, byteBuf);
+        }
     }
 
 }

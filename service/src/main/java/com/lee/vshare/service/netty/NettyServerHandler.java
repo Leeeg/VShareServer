@@ -134,11 +134,20 @@ public class NettyServerHandler extends ChannelInboundHandlerAdapter {
                 NettyMessage.NettyMsg readNettyMsg = (NettyMessage.NettyMsg) msg;
                 logger.info("内容 " + readNettyMsg.toString());
                 if (readNettyMsg.getMsgType() == MSG_USER_HEART_BEAT) {
-                    System.out.println("客户端发送的心跳  remoteAddress : " + channel.remoteAddress() + " localAddress : " + channel.localAddress());
+                    logger.info("客户端发送的心跳  remoteAddress : " + channel.remoteAddress() + " localAddress : " + channel.localAddress());
                     nettyTask.peng(channel);
                 } else if (readNettyMsg.getMsgType() == MSG_USER_BUSINESS) {
+                    logger.info("客户端发送的业务消息");
                     nettyTask.dispenseMsg(channel, readNettyMsg);
-                } else {
+                } else if (readNettyMsg.getMsgType() == MSG_TALK_APPLY) {
+                    logger.info("客户端申请话权");
+                    nettyTask.sendMsgToAll(MSG_TALK_APPLY_SUCCESS);
+                } else if (readNettyMsg.getMsgType() == MSG_TALK_RELEASE) {
+                    logger.info("客户端释放话权");
+                    nettyTask.getUdpAddr().clear();
+                    nettyTask.sendMsgToAll(MSG_TALK_RELEASE);
+                }
+                else {
                     System.out.println("未知命令!");
                 }
             } else {
