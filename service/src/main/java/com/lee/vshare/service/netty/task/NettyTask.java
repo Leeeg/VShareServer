@@ -65,7 +65,7 @@ public class NettyTask {
             udpAddr.values().forEach(address -> {
                 if (sender != address) {
                     ByteBuf buf = Unpooled.copiedBuffer(byteBuf);
-                    logger.info(" send >>>>>>  toAddress = " + address);
+                    logger.info(" send >>>>>>  toAddress ： " + address);
                     DatagramPacket dispensePacket = new DatagramPacket(buf, address);
                     udpChannel.writeAndFlush(dispensePacket);
                 }
@@ -81,17 +81,6 @@ public class NettyTask {
         long start = System.currentTimeMillis();
         logger.info("转发Msg给 " + channelGroup.size() + " 人");
         channelGroup.writeAndFlush(readNettyMsg);
-//        channelGroup.forEach(channel -> {
-//            if (formChannel != channel) {
-//                channel.writeAndFlush(readNettyMsg);
-//            } else {
-//                NettyMessage.NettyMsg pengNettyMsg = NettyMessage.NettyMsg.newBuilder()
-//                        .setMsgType(MSG_USER_MESSAGE_SUCCESS)
-//                        .setMsgContent("success")
-//                        .build();
-//                channel.writeAndFlush(pengNettyMsg);
-//            }
-//        });
         long end = System.currentTimeMillis();
         logger.info("dispenseMsg finished, time elapsed: {} ms." + "\n", end - start);
     }
