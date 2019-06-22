@@ -8,12 +8,12 @@
     <properties resource="application.properties"/>
 
     <context id="Mysql" targetRuntime="MyBatis3Simple" defaultModelType="flat">
-        <property name="beginningDelimiter" value="`" />
-        <property name="endingDelimiter" value="`" />
+        <property name="beginningDelimiter" value="`"/>
+        <property name="endingDelimiter" value="`"/>
 
         <!-- 配置通用Mapper的MBG插件相关信息 -->
         <plugin type="${mapper.plugin}">
-            <property name="mappers" value="${mapper.Mapper}" />
+            <property name="mappers" value="${mapper.Mapper}"/>
             <!--caseSensitive默认false，当数据库表名区分大小写时，可以将该属性设置为true-->
             <!--<property name="caseSensitive" value="true"/>-->
         </plugin>
@@ -28,7 +28,7 @@
         <!-- <plugin type="org.mybatis.generator.plugins.EqualsHashCodePlugin" /> -->
 
         <!--避免生成重复代码的插件-->
-        <plugin type="com.lee.vshare.service.generator.OverIsMergeablePlugin"/>
+        <!--<plugin type="com.lee.vshare.service.generator.OverIsMergeablePlugin"/>-->
 
         <!--是否在代码中显示注释-->
         <commentGenerator>
@@ -72,45 +72,18 @@
             <property name="immutable" value="false"/>
         </javaClientGenerator>
 
-        <!--生成对应表及类名-->
-        <!--<table tableName="sys_log" domainObjectName="SystemLog">-->
-            <!--<generatedKey column="id" sqlStatement="Mysql" identity="true"/>-->
-        <!--</table>-->
-        <!--<table tableName="sys_view" domainObjectName="SystemView">-->
-            <!--<generatedKey column="id" sqlStatement="Mysql" identity="true"/>-->
-        <!--</table>-->
-        <!--<table tableName="tbl_article_content" domainObjectName="ArticleContent">-->
-            <!--<generatedKey column="id" sqlStatement="Mysql" identity="true"/>-->
-        <!--</table>-->
-        <!--<table tableName="tbl_article_info" domainObjectName="ArticleInfo">-->
-            <!--<generatedKey column="id" sqlStatement="Mysql" identity="true"/>-->
-        <!--</table>-->
-        <!--<table tableName="tbl_article_message" domainObjectName="ArticleMessage">-->
-            <!--<generatedKey column="id" sqlStatement="Mysql" identity="true"/>-->
-        <!--</table>-->
-        <!--<table tableName="tbl_message" domainObjectName="Message">-->
-            <!--<generatedKey column="id" sqlStatement="Mysql" identity="true"/>-->
-        <!--</table>-->
-        <!--<table tableName="tbl_sort_info" domainObjectName="SortInfo">-->
-            <!--<generatedKey column="id" sqlStatement="Mysql" identity="true"/>-->
-        <!--</table>-->
-        <!--<table tableName="tbl_article_sort" domainObjectName="ArticleSort">-->
-            <!--<generatedKey column="id" sqlStatement="Mysql" identity="true"/>-->
-        <!--</table>-->
-
-
-        <table tableName="v_account" domainObjectName="Account">
-            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
-        </table>
-        <!--<table tableName="v_notes" domainObjectName="Notes">-->
-            <!--<generatedKey column="id" sqlStatement="Mysql" identity="true"/>-->
-        <!--</table>-->
-        <!--<table tableName="v_notes_account" domainObjectName="NotesToAccount">-->
-            <!--<generatedKey column="id" sqlStatement="Mysql" identity="true"/>-->
-        <!--</table>-->
-        <!--<table tableName="v_visit_log" domainObjectName="VisitLog">-->
+        <!--<table tableName="v_account" domainObjectName="Account">-->
         <!--<generatedKey column="id" sqlStatement="Mysql" identity="true"/>-->
         <!--</table>-->
+        <!--<table tableName="v_notes" domainObjectName="Notes">-->
+        <!--<generatedKey column="id" sqlStatement="Mysql" identity="true"/>-->
+        <!--</table>-->
+        <!--<table tableName="v_notes_account" domainObjectName="NotesToAccount">-->
+        <!--<generatedKey column="id" sqlStatement="Mysql" identity="true"/>-->
+        <!--</table>-->
+        <table tableName="v_visit_log" domainObjectName="VisitLog">
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+        </table>
 
     </context>
 </generatorConfiguration>

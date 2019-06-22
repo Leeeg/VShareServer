@@ -1,0 +1,17 @@
+2019-06-19 10:21:46.164  WARN 30324 --- [main] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.lee.vshare.service]' package. Please check your configuration.
+2019-06-19 10:21:52.976  WARN 30324 --- [main] io.netty.bootstrap.ServerBootstrap       : Unknown channel option 'SO_SNDBUF' for channel '[id: 0xd01b98ff]'
+2019-06-19 10:21:53.015  WARN 30324 --- [main] io.netty.bootstrap.ServerBootstrap       : Unknown channel option 'SO_KEEPALIVE' for channel '[id: 0xd01b98ff]'
+2019-06-19 10:21:53.015  WARN 30324 --- [main] io.netty.bootstrap.ServerBootstrap       : Unknown channel option 'io.netty.channel.unix.UnixChannelOption#SO_REUSEPORT' for channel '[id: 0xd01b98ff]'
+2019-06-19 10:21:53.077  WARN 30324 --- [main] io.netty.bootstrap.Bootstrap             : Unknown channel option 'SO_BACKLOG' for channel '[id: 0x34a6186a]'
+2019-06-19 10:22:41.858  WARN 30546 --- [main] s.d.s.w.r.p.ParameterDataTypeReader      : Trying to infer dataType java.lang.Long[]
+2019-06-19 10:23:48.535  WARN 30546 --- [http-nio-8089-exec-5] o.s.web.servlet.PageNotFound             : No mapping for GET /
+2019-06-19 10:23:48.597  WARN 30546 --- [http-nio-8089-exec-4] o.s.web.servlet.PageNotFound             : No mapping for GET /csrf
+2019-06-19 15:28:30.316  WARN 4704 --- [main] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.lee.vshare.service]' package. Please check your configuration.
+2019-06-19 15:28:37.023  WARN 4704 --- [main] io.netty.bootstrap.ServerBootstrap       : Unknown channel option 'SO_SNDBUF' for channel '[id: 0x491674ea]'
+2019-06-19 15:28:37.054  WARN 4704 --- [main] io.netty.bootstrap.ServerBootstrap       : Unknown channel option 'SO_KEEPALIVE' for channel '[id: 0x491674ea]'
+2019-06-19 15:28:37.054  WARN 4704 --- [main] io.netty.bootstrap.ServerBootstrap       : Unknown channel option 'io.netty.channel.unix.UnixChannelOption#SO_REUSEPORT' for channel '[id: 0x491674ea]'
+2019-06-19 15:28:37.070  WARN 4704 --- [main] io.netty.bootstrap.Bootstrap             : Unknown channel option 'SO_BACKLOG' for channel '[id: 0x35151cd0]'
+2019-06-19 15:28:54.490  WARN 4884 --- [main] s.d.s.w.r.p.ParameterDataTypeReader      : Trying to infer dataType java.lang.Long[]
+2019-06-19 15:28:59.785  WARN 4884 --- [http-nio-8089-exec-7] o.s.web.servlet.PageNotFound             : No mapping for GET /
+2019-06-19 15:28:59.901  WARN 4884 --- [http-nio-8089-exec-8] o.s.web.servlet.PageNotFound             : No mapping for GET /csrf
+2019-06-19 15:30:31.607  WARN 5156 --- [main] s.d.s.w.r.p.ParameterDataTypeReader      : Trying to infer dataType java.lang.Long[]

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.lee.vshare.common.dao.VisitLogMapper">
+<mapper namespace="com.lee.vshare.service.dao.VisitLogMapper">
   <resultMap id="BaseResultMap" type="com.lee.vshare.common.entity.VisitLog">
     <!--
       WARNING - @mbg.generated
     -->
-    <result column="id" jdbcType="BIGINT" property="id" />
+    <id column="id" jdbcType="BIGINT" property="id" />
     <result column="ip" jdbcType="VARCHAR" property="ip" />
     <result column="time" jdbcType="TIMESTAMP" property="time" />
     <result column="remark" jdbcType="VARCHAR" property="remark" />

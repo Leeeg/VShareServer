@@ -1,17 +1,15 @@
 package com.lee.vshare.common.entity;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Table;
 import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.*;
 
 @Table(name = "v_visit_log")
 public class VisitLog implements Serializable {
     /**
      * 主键
      */
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
