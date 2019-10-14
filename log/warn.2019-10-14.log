@@ -1,0 +1,42 @@
+2019-10-14 13:53:29.126  WARN 9375 --- [main] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.lee.vshare.service]' package. Please check your configuration.
+2019-10-14 13:53:31.109  WARN 9375 --- [main] o.a.c.loader.WebappClassLoaderBase       : The web application [ROOT] appears to have started a thread named [Abandoned connection cleanup thread] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@13/java.lang.Object.wait(Native Method)
+ java.base@13/java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:155)
+ app//com.mysql.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:43)
+2019-10-14 13:58:09.277  WARN 9673 --- [main] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.lee.vshare.service]' package. Please check your configuration.
+2019-10-14 13:58:10.788  WARN 9673 --- [main] io.netty.bootstrap.ServerBootstrap       : Unknown channel option 'SO_SNDBUF' for channel '[id: 0x36468b52]'
+2019-10-14 13:58:10.794  WARN 9673 --- [main] io.netty.bootstrap.ServerBootstrap       : Unknown channel option 'SO_KEEPALIVE' for channel '[id: 0x36468b52]'
+2019-10-14 13:58:10.794  WARN 9673 --- [main] io.netty.bootstrap.ServerBootstrap       : Unknown channel option 'io.netty.channel.unix.UnixChannelOption#SO_REUSEPORT' for channel '[id: 0x36468b52]'
+2019-10-14 13:58:10.858  WARN 9673 --- [main] io.netty.bootstrap.Bootstrap             : Unknown channel option 'SO_BACKLOG' for channel '[id: 0xa96a2a41]'
+2019-10-14 13:59:32.156  WARN 9820 --- [main] s.d.s.w.r.p.ParameterDataTypeReader      : Trying to infer dataType java.lang.Long[]
+2019-10-14 14:00:21.897  WARN 9820 --- [http-nio-8089-exec-1] o.s.web.servlet.PageNotFound             : No mapping for GET /swagger-ui
+2019-10-14 14:00:23.925  WARN 9820 --- [http-nio-8089-exec-2] o.s.web.servlet.PageNotFound             : No mapping for GET /favicon.ico
+2019-10-14 14:00:25.268  WARN 9820 --- [http-nio-8089-exec-3] o.s.web.servlet.PageNotFound             : No mapping for GET /swagger-ui
+2019-10-14 14:00:25.843  WARN 9820 --- [http-nio-8089-exec-4] o.s.web.servlet.PageNotFound             : No mapping for GET /swagger-ui
+2019-10-14 14:00:26.024  WARN 9820 --- [http-nio-8089-exec-5] o.s.web.servlet.PageNotFound             : No mapping for GET /swagger-ui
+2019-10-14 14:00:46.242  WARN 9820 --- [http-nio-8089-exec-4] o.s.web.servlet.PageNotFound             : No mapping for GET /
+2019-10-14 14:00:46.261  WARN 9820 --- [http-nio-8089-exec-2] o.s.web.servlet.PageNotFound             : No mapping for GET /csrf
+2019-10-14 14:01:03.341  WARN 9820 --- [http-nio-8089-exec-5] o.s.web.servlet.PageNotFound             : No mapping for GET /
+2019-10-14 14:01:03.351  WARN 9820 --- [http-nio-8089-exec-7] o.s.web.servlet.PageNotFound             : No mapping for GET /csrf
+2019-10-14 14:01:03.910  WARN 9820 --- [http-nio-8089-exec-6] o.s.web.servlet.PageNotFound             : No mapping for GET /
+2019-10-14 14:01:03.924  WARN 9820 --- [http-nio-8089-exec-5] o.s.web.servlet.PageNotFound             : No mapping for GET /csrf
+2019-10-14 14:05:47.274  WARN 10206 --- [main] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.lee.vshare.service]' package. Please check your configuration.
+2019-10-14 14:05:48.683  WARN 10206 --- [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'accountServiceImpl' defined in file [/home/lee/Personal/VShareServer/service/target/classes/com/lee/vshare/service/service/AccountServiceImpl.class]: Initialization of bean failed; nested exception is java.lang.ExceptionInInitializerError
+2019-10-14 14:05:48.697  WARN 10206 --- [main] o.a.c.loader.WebappClassLoaderBase       : The web application [ROOT] appears to have started a thread named [Abandoned connection cleanup thread] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@13/java.lang.Object.wait(Native Method)
+ java.base@13/java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:155)
+ app//com.mysql.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:43)
+2019-10-14 14:06:56.268  WARN 10443 --- [main] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.lee.vshare.service]' package. Please check your configuration.
+2019-10-14 14:06:57.721  WARN 10443 --- [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'accountServiceImpl' defined in file [/home/lee/Personal/VShareServer/service/target/classes/com/lee/vshare/service/service/AccountServiceImpl.class]: Initialization of bean failed; nested exception is java.lang.ExceptionInInitializerError
+2019-10-14 14:06:57.729  WARN 10443 --- [main] o.a.c.loader.WebappClassLoaderBase       : The web application [ROOT] appears to have started a thread named [Abandoned connection cleanup thread] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base@13/java.lang.Object.wait(Native Method)
+ java.base@13/java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:155)
+ app//com.mysql.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:43)
+2019-10-14 14:08:32.955  WARN 10888 --- [main] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.lee.vshare.service]' package. Please check your configuration.
+2019-10-14 14:08:35.064  WARN 10888 --- [main] io.netty.bootstrap.ServerBootstrap       : Unknown channel option 'SO_SNDBUF' for channel '[id: 0xddc11540]'
+2019-10-14 14:08:35.071  WARN 10888 --- [main] io.netty.bootstrap.ServerBootstrap       : Unknown channel option 'SO_KEEPALIVE' for channel '[id: 0xddc11540]'
+2019-10-14 14:08:35.071  WARN 10888 --- [main] io.netty.bootstrap.ServerBootstrap       : Unknown channel option 'io.netty.channel.unix.UnixChannelOption#SO_REUSEPORT' for channel '[id: 0xddc11540]'
+2019-10-14 14:08:35.079  WARN 10888 --- [main] io.netty.bootstrap.Bootstrap             : Unknown channel option 'SO_BACKLOG' for channel '[id: 0xd2783c8d]'
+2019-10-14 14:12:30.652  WARN 11114 --- [main] s.d.s.w.r.p.ParameterDataTypeReader      : Trying to infer dataType java.lang.Long[]
+2019-10-14 14:12:44.078  WARN 11114 --- [http-nio-8089-exec-7] o.s.web.servlet.PageNotFound             : No mapping for GET /
+2019-10-14 14:12:44.104  WARN 11114 --- [http-nio-8089-exec-8] o.s.web.servlet.PageNotFound             : No mapping for GET /csrf
