@@ -12,6 +12,7 @@ import tk.mybatis.mapper.entity.Example;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @Create by lee
@@ -28,27 +29,40 @@ public class BlogServiceImpl extends BaseService<Notes> implements BlogService {
     NotesMapper notesMapper;
 
     @Override
-    public Integer addNote(String title, String content, Boolean isPrivate, Byte type) {
+    public Integer addNote(String title, String content, String describe, Boolean isPrivate, Byte type, Long noteId) {
+
+        Example example = new Example(Notes.class);
+        Example.Criteria criteria = example.createCriteria();
+        criteria.orEqualTo("noteId", noteId);
+        Notes notesE = notesMapper.selectOneByExample(example);
         Notes notes = new Notes();
-        Long lastNoteId = 0L;
-        Notes lastNote = notesMapper.selectNotesDesc(1);
-        if (null != lastNote) {
-            logger.info("lastNote : " + lastNote.toString());
-            lastNoteId = lastNote.getNoteId() == null ? 1 : lastNote.getNoteId() + 1;
+        if (null != notesE) {
+            logger.info("{} lastNote : {}", "修改 >>> ", notesE.toString());
+            notesE.setNoteModifiedTime(new Date());
+            notesE.setNotePermission(isPrivate);
+            notesE.setNoteTitle(title);
+            notesE.setNoteContent(content);
+            notesE.setNoteType(type);
+            notesE.setNoteDescribe(describe);
+            notesE.setNoteWords(content.length());
+            return notesMapper.updateByExampleSelective(notesE, example);
+        } else {
+            logger.info("{} lastNote : {}", "添加 >>> ", notes.toString());
+            notes.setNoteCreateTime(new Date());
+            notes.setNoteModifiedTime(new Date());
+            notes.setNoteAuthorId(123L);
+            notes.setNoteLikes(0);
+            notes.setNotePermission(isPrivate);
+            notes.setNoteReads(0);
+            notes.setNoteId(noteId);
+            notes.setNoteTitle(title);
+            notes.setNoteContent(content);
+            notes.setNoteType(type);
+            notes.setNoteShare(1);
+            notes.setNoteWords(content.length());
+            notes.setNoteAuthorName("lee");
+            return notesMapper.insert(notes);
         }
-        notes.setNoteCreateTime(new Date());
-        notes.setNoteModifiedTime(new Date());
-        notes.setNoteAuthorId(123L);
-        notes.setNoteLikes(0);
-        notes.setNotePermission(isPrivate);
-        notes.setNoteReads(0);
-        notes.setNoteId(lastNoteId);
-        notes.setNoteTitle(title);
-        notes.setNoteContent(content);
-        notes.setNoteType(type);
-        notes.setNoteWords(content.length());
-        notes.setNoteAuthorName("lee");
-        return notesMapper.insert(notes);
     }
 
     @Override
@@ -91,6 +105,11 @@ public class BlogServiceImpl extends BaseService<Notes> implements BlogService {
             criteria.orEqualTo("noteId", id);
         }
         return notesMapper.selectByExample(example);
+    }
+
+    @Override
+    public List<Map<String, Object>> getNotesList() {
+        return notesMapper.selectNotesWithoutContent();
     }
 
 }

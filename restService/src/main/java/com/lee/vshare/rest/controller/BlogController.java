@@ -49,23 +49,26 @@ public class BlogController extends BaseController implements NotesPresenter {
     @ApiImplicitParams({
             @ApiImplicitParam(name = "title", value = "文章标题", required = true, dataType = "String"),
             @ApiImplicitParam(name = "content", value = "文章内容", required = true, dataType = "String"),
+            @ApiImplicitParam(name = "describe", value = "文章简介", required = true, dataType = "String"),
             @ApiImplicitParam(name = "isPrivate", value = "是否私有", required = true, dataType = "Boolean"),
-            @ApiImplicitParam(name = "type", value = "文章分类", required = true, dataType = "Byte", example = "0")
+            @ApiImplicitParam(name = "type", value = "文章分类", required = true, dataType = "Byte", example = "0"),
+            @ApiImplicitParam(name = "noteId", value = "文章Id", required = true, dataType = "Long", example = "0L")
     })
     @Override
-    public Response addNote(String title, String content, Boolean isPrivate, Byte type) {
+    public Response addNote(String title, String content, String describe, Boolean isPrivate, Byte type, Long noteId) {
         logger.info("addNote : "
                 + " \ntitle = " + title
                 + " \ncontent = " + content
                 + " \nisPrivate = " + isPrivate
                 + " \ntype = " + type
+                + " \ndescribe = " + describe
         );
 
         if (DataUtil.isEmpty(title, content) || null == isPrivate || type > 2) {
             return ResponseUtil.error(ResponseEnum.PARAMETER_INVALID);
         }
 
-        int result = notesService.addNote(title, content, isPrivate, type);
+        int result = notesService.addNote(title, content, describe, isPrivate, type, noteId);
         if (0 == result) {
             return ResponseUtil.error(ResponseEnum.INSERT_FAILED);
         }
@@ -145,6 +148,14 @@ public class BlogController extends BaseController implements NotesPresenter {
             }
         });
         return ResponseUtil.success(notesList);
+    }
+
+    @ApiOperation("获取全部文章列表不含内容")
+    @GetMapping("/getNotesList")
+    @Override
+    public Response getNotesList() {
+        logger.info("getNotesList  --- ");
+        return ResponseUtil.success(notesService.getNotesList());
     }
 
 }

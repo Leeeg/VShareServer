@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.lee.vshare.common.dao.NotesMapper">
+<mapper namespace="com.lee.vshare.service.dao.NotesMapper">
   <resultMap id="BaseResultMap" type="com.lee.vshare.common.entity.Notes">
     <!--
       WARNING - @mbg.generated
@@ -24,6 +24,14 @@
 
   <select id="selectNotesDesc" resultMap="BaseResultMap" parameterType="int" >
     SELECT * from v_notes order by id DESC limit #{id}
+  </select>
+
+  <select id="selectNotesWithoutContent" resultMap="BaseResultMap">
+    SELECT note_id,note_title,note_words,note_describe from v_notes
+  </select>
+
+  <select id="selectNotesContent" resultMap="BaseResultMap" parameterType="Long" >
+    SELECT note_content from v_notes where note_id = #{noteId}
   </select>
 
 </mapper>
