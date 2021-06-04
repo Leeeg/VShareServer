@@ -34,7 +34,7 @@
         <integration-mqtt.version>5.1.1.RELEASE</integration-mqtt.version>
         <protobuf.version>2.6.1</protobuf.version>
         <protobuf-java-format.version>1.4</protobuf-java-format.version>
-        <httpclient.version>4.5.5</httpclient.version>
+        <httpclient.version>4.5.13</httpclient.version>
         <fastjson.version>1.2.57</fastjson.version>
         <jwt.version>3.8.0</jwt.version>
     </properties>
